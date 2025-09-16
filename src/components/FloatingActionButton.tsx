@@ -112,8 +112,8 @@ const FloatingActionButton = () => {
           aria-label={isOpen ? 'Close contact options' : 'Open contact options'}
           aria-expanded={isOpen}
           style={{ 
-            width: '30px', 
-            height: '30px',
+            width: '60px', 
+            height: '60px',
             background: 'var(--gradient-floating)',
             boxShadow: `
               0 20px 40px -12px rgba(124, 180, 65, 0.4),
@@ -134,7 +134,7 @@ const FloatingActionButton = () => {
             <div className="absolute inset-1 rounded-full bg-gradient-to-br from-white/20 to-transparent" />
             
             {/* Icon */}
-            <MdOutlineSupportAgent className="text-white relative z-10" style={{ width: '25px', height: '25px' }} />
+            <MdOutlineSupportAgent className="text-white relative z-10" style={{ width: '32px', height: '32px' }} />
             
             {/* Rotating gradient overlay */}
             <div className={`absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transition-all duration-1000 ${
