@@ -159,9 +159,14 @@ const Header = () => {
                   <FiSettings className="h-4 w-4" />
                   Sign Up
                 </Link>
+                <div className="border-t my-1"></div>
                 <Link to="/profile" className="flex items-center gap-2 px-3 py-2 text-sm hover:bg-accent transition-colors">
                   <FiUser className="h-4 w-4" />
                   Profile
+                </Link>
+                <Link to="/admin" className="flex items-center gap-2 px-3 py-2 text-sm hover:bg-accent transition-colors">
+                  <FiSettings className="h-4 w-4" />
+                  Admin Panel
                 </Link>
                 <Link to="/profile" className="flex items-center gap-2 px-3 py-2 text-sm hover:bg-accent transition-colors">
                   <FiSettings className="h-4 w-4" />
