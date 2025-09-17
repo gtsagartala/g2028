@@ -3,6 +3,7 @@ import { FaWhatsapp, FaTelegramPlane } from 'react-icons/fa';
 import { MdOutlineSupportAgent } from 'react-icons/md';
 import { useState, useEffect } from 'react';
 import ChatBox from './ChatBox';
+import { constants } from '@/app/config/app.config';
 
 const FloatingActionButton = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -27,7 +28,7 @@ const FloatingActionButton = () => {
       label: 'WhatsApp', 
       time: 'Quick Response',
       gradient: 'from-green-500 to-green-600',
-      href: 'https://wa.me/1234567890',
+      href: constants.COMPANY.WHATSAPP,
       delay: 200
     },
     { 
@@ -35,7 +36,7 @@ const FloatingActionButton = () => {
       label: 'Telegram', 
       time: 'Instant Chat',
       gradient: 'from-blue-500 to-blue-600',
-      href: 'https://t.me/gorillatech',
+      href: constants.COMPANY.SOCIAL_LINKS.TELEGRAM,
       delay: 300
     },
   ];
