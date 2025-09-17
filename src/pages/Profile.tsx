@@ -10,13 +10,14 @@ import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { FiUser, FiMail, FiPhone, FiMapPin, FiCamera, FiEye, FiEyeOff, FiLock } from 'react-icons/fi';
+import { FiUser, FiMail, FiPhone, FiMapPin, FiCamera, FiEye, FiEyeOff, FiLock, FiFileText } from 'react-icons/fi';
 
 const Profile = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [showCurrentPassword, setShowCurrentPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [showDocuments, setShowDocuments] = useState(false);
 
   const [profileData, setProfileData] = useState({
     firstName: 'John',
@@ -97,6 +98,43 @@ const Profile = () => {
                           <FiMapPin className="h-4 w-4 mr-1" />
                           {profileData.location}
                         </span>
+                      </div>
+                      
+                      {/* Documents Option */}
+                      <div className="mt-3">
+                        <Button 
+                          variant="outline" 
+                          size="sm"
+                          onClick={() => setShowDocuments(!showDocuments)}
+                          className="flex items-center space-x-2"
+                        >
+                          <FiFileText className="h-4 w-4" />
+                          <span>Documents</span>
+                        </Button>
+                        
+                        {showDocuments && (
+                          <Card className="mt-3 max-w-md">
+                            <CardHeader className="pb-3">
+                              <CardTitle className="text-lg">My Notes</CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                              <div className="space-y-3">
+                                <div className="p-3 bg-muted rounded-lg">
+                                  <h4 className="font-medium text-sm mb-1">Project Meeting Notes</h4>
+                                  <p className="text-sm text-muted-foreground">Discussed upcoming project deliverables and timelines for Q4.</p>
+                                </div>
+                                <div className="p-3 bg-muted rounded-lg">
+                                  <h4 className="font-medium text-sm mb-1">Client Requirements</h4>
+                                  <p className="text-sm text-muted-foreground">Updated requirements document with new feature requests.</p>
+                                </div>
+                                <div className="p-3 bg-muted rounded-lg">
+                                  <h4 className="font-medium text-sm mb-1">Technical Specifications</h4>
+                                  <p className="text-sm text-muted-foreground">Database schema changes and API endpoint documentation.</p>
+                                </div>
+                              </div>
+                            </CardContent>
+                          </Card>
+                        )}
                       </div>
                     </div>
                   </div>
