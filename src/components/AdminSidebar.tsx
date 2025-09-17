@@ -110,9 +110,14 @@ export function AdminSidebar() {
               <FiShield className="w-4 h-4 text-primary-foreground" />
             </div>
             {!collapsed && (
-              <div>
+              <div className="flex-1">
                 <h2 className="text-sm font-semibold">Admin Panel</h2>
-                <p className="text-xs text-muted-foreground">Control Center</p>
+                <NavLink 
+                  to="/" 
+                  className="text-xs text-primary hover:text-primary/80 hover:underline transition-colors"
+                >
+                  ← Back to Home Page
+                </NavLink>
               </div>
             )}
           </div>
