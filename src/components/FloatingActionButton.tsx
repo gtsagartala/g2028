@@ -2,10 +2,12 @@ import { FiHeadphones } from 'react-icons/fi';
 import { FaWhatsapp, FaTelegramPlane } from 'react-icons/fa';
 import { MdOutlineSupportAgent } from 'react-icons/md';
 import { useState, useEffect } from 'react';
+import ChatBox from './ChatBox';
 
 const FloatingActionButton = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [isChatOpen, setIsChatOpen] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -17,7 +19,7 @@ const FloatingActionButton = () => {
       label: 'Live Support', 
       time: '24/7 Available',
       gradient: 'from-emerald-500 to-emerald-600',
-      href: '#support',
+      onClick: () => setIsChatOpen(true),
       delay: 100
     },
     { 
@@ -57,17 +59,16 @@ const FloatingActionButton = () => {
               transform: isOpen ? 'translateX(0)' : 'translateX(100px)'
             }}
           >
-            <a
-              href={option.href}
-              target={option.href.startsWith('http') ? '_blank' : '_self'}
-              rel={option.href.startsWith('http') ? 'noopener noreferrer' : ''}
-              className={`group flex items-center gap-3 p-3 pr-4 rounded-2xl bg-gradient-to-r ${option.gradient} 
-                        text-white transition-all duration-300 hover:scale-105 transform-gpu
-                        relative overflow-hidden min-w-[280px] backdrop-blur-sm`}
-              style={{
-                boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2), 0 4px 16px rgba(0, 0, 0, 0.1)',
-              }}
-            >
+            {option.onClick ? (
+              <button
+                onClick={option.onClick}
+                className={`group flex items-center gap-3 p-3 pr-4 rounded-2xl bg-gradient-to-r ${option.gradient} 
+                          text-white transition-all duration-300 hover:scale-105 transform-gpu
+                          relative overflow-hidden min-w-[280px] backdrop-blur-sm w-full text-left`}
+                style={{
+                  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2), 0 4px 16px rgba(0, 0, 0, 0.1)',
+                }}
+              >
               {/* Animated background glow */}
               <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               
@@ -93,7 +94,46 @@ const FloatingActionButton = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </div>
-            </a>
+              </button>
+            ) : (
+              <a
+                href={option.href}
+                target={option.href?.startsWith('http') ? '_blank' : '_self'}
+                rel={option.href?.startsWith('http') ? 'noopener noreferrer' : ''}
+                className={`group flex items-center gap-3 p-3 pr-4 rounded-2xl bg-gradient-to-r ${option.gradient} 
+                          text-white transition-all duration-300 hover:scale-105 transform-gpu
+                          relative overflow-hidden min-w-[280px] backdrop-blur-sm`}
+                style={{
+                  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2), 0 4px 16px rgba(0, 0, 0, 0.1)',
+                }}
+              >
+                {/* Animated background glow */}
+                <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                
+                {/* Icon container */}
+                <div className="relative z-10 flex-shrink-0 w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center group-hover:bg-white/30 transition-all duration-300 group-hover:scale-110">
+                  <option.icon className="w-6 h-6" />
+                </div>
+                
+                {/* Content */}
+                <div className="flex-1 relative z-10">
+                  <div className="font-semibold text-base">{option.label}</div>
+                  <div className="text-sm text-white/80">{option.time}</div>
+                </div>
+                
+                {/* Pulse indicator */}
+                <div className="relative z-10 opacity-70 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="w-3 h-3 bg-white rounded-full animate-pulse" />
+                </div>
+                
+                {/* Hover arrow */}
+                <div className="relative z-10 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0">
+                  <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </div>
+              </a>
+            )}
           </div>
         ))}
       </div>
@@ -156,6 +196,12 @@ const FloatingActionButton = () => {
           onClick={() => setIsOpen(false)}
         />
       )}
+
+      {/* Chat Box */}
+      <ChatBox 
+        isOpen={isChatOpen} 
+        onClose={() => setIsChatOpen(false)} 
+      />
     </div>
   );
 };
