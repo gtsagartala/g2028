@@ -120,6 +120,27 @@ export function AdminSidebar() {
 
         <SidebarGroup className="px-2">
           <SidebarGroupLabel className={collapsed ? "sr-only" : ""}>
+            Quick Actions
+          </SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                  <NavLink 
+                    to="/" 
+                    className="flex items-center gap-3 rounded-md px-3 py-2 text-sm transition-colors hover:bg-muted/50 text-muted-foreground hover:text-foreground border border-border/50 hover:border-border"
+                  >
+                    <FiHome className="h-4 w-4 flex-shrink-0" />
+                    {!collapsed && <span>← Back to Home</span>}
+                  </NavLink>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+
+        <SidebarGroup className="px-2">
+          <SidebarGroupLabel className={collapsed ? "sr-only" : ""}>
             Navigation
           </SidebarGroupLabel>
           <SidebarGroupContent>
