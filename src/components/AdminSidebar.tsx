@@ -11,33 +11,9 @@ const adminMenuItems = [{
   url: "/admin/users",
   icon: FiUsers
 }, {
-  title: "Messages",
-  url: "/admin/messages",
-  icon: FiMessageSquare
-}, {
   title: "Analytics",
   url: "/admin/analytics",
   icon: FiBarChart
-}, {
-  title: "Content",
-  url: "/admin/content",
-  icon: FiFileText
-}, {
-  title: "Mail",
-  url: "/admin/mail",
-  icon: FiMail
-}, {
-  title: "Payments",
-  url: "/admin/payments",
-  icon: FiDollarSign
-}, {
-  title: "System",
-  url: "/admin/system",
-  icon: FiMonitor
-}, {
-  title: "Security",
-  url: "/admin/security",
-  icon: FiShield
 }, {
   title: "Settings",
   url: "/admin/settings",
